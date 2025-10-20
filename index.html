@@ -1,82 +1,127 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Makna “Birds of a Feather”</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untuk Ciya 💜</title>
   <style>
     body {
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(to right, #f7d9ff, #e0c4ff);
       margin: 0;
       padding: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom right, #f7d9ff, #e0c4ff);
+      color: #2c003e;
       text-align: center;
-      color: #222;
-    }
-
-    .container {
-      background: white;
-      border-radius: 20px;
-      padding: 25px;
-      margin: 20px;
-      max-width: 90%;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      overflow-x: hidden;
     }
 
     h1 {
-      font-size: 1.4em;
-      margin-bottom: 10px;
+      margin-top: 40px;
+      font-size: 2em;
       color: #6a0dad;
     }
 
-    p {
-      font-size: 1em;
+    .text {
+      max-width: 600px;
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       line-height: 1.6;
-      margin-bottom: 15px;
     }
 
-    .music {
+    .love {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: #f3e0ff;
-      border-radius: 15px;
-      padding: 10px 15px;
-      font-size: 0.9em;
+      background: #f8e6ff;
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 14px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s;
     }
 
-    .music a {
-      text-decoration: none;
-      color: #5e1da6;
+    .love:hover {
+      transform: scale(1.1);
+      background: #eac4ff;
     }
 
-    .music::before {
-      content: "🎵 ";
+    .heart {
+      position: fixed;
+      width: 15px;
+      height: 15px;
+      background: pink;
+      transform: rotate(45deg);
+      animation: fall 4s linear infinite;
     }
 
-    @media (min-width: 768px) {
-      .container {
-        max-width: 600px;
-      }
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: pink;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -7px; left: 0; }
+    .heart::after { left: -7px; top: 0; }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(45deg) scale(1); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(45deg) scale(0.5); opacity: 0; }
+    }
+
+    audio {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Makna Lagu “Birds of a Feather”</h1>
-    <p>bukan karena siapa dia di mata dunia, tapi karena di mataku, dia sudah cukup untuk jadi segalanya.</p>
-    <p>Setiap tatapnya seperti langit sore, tenang, lembut, tapi mampu menenangkan ribuan resahku.</p>
-    <p>Setiap senyumnya selalu berhasil membuat waktu berhenti sejenak, seakan dunia memberi ruang untukku menikmati kehadirannya.</p>
+
+  <h1>💌 Untuk Ciya dari Dandi 💜</h1>
+
+  <div class="text">
+    <p>“Aku mencintainya, bukan karena siapa dia di mata dunia, tapi karena di mataku, dia sudah cukup untuk jadi segalanya.”</p>
+    <p>Setiap tatapnya seperti langit sore — tenang, lembut, tapi mampu menenangkan ribuan resahku.</p>
+    <p>Setiap senyumnya selalu berhasil membuat waktu berhenti sejenak, seakan dunia memberi ruang untukku menikmati indahnya dirinya.</p>
+    <p style="margin-top:20px;">— untuk kekasihku (Ciya) 💜</p>
   </div>
 
-  <div class="music">
-    <a href="makna.html">Lihat Makna Lagu “Birds of a Feather”</a>
+  <div class="love" onclick="peluk()">
+    🤗 Kirim Peluk Jauh
   </div>
+
+  <audio autoplay loop controls>
+    <source src="birds_instrumental.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio.
+  </audio>
+
+  <script>
+    function peluk() {
+      alert("💞 Peluk jauh terkirim ke Ciya dari Dandi 💞");
+      for (let i = 0; i < 8; i++) {
+        buatHati();
+      }
+    }
+
+    function buatHati() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.background = `hsl(${Math.random() * 360}, 80%, 70%)`;
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+  </script>
 </body>
-  </html>
+</html>
