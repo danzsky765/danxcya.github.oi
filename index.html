@@ -1,127 +1,202 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Untuk Ciya 💜</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dandi 💜 Ciya</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
     body {
       margin: 0;
-      padding: 0;
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(to bottom right, #f7d9ff, #e0c4ff);
-      color: #2c003e;
-      text-align: center;
+      background: linear-gradient(135deg, #f9e6ff, #fce4f6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      transition: background 0.5s, color 0.5s;
       overflow-x: hidden;
     }
 
-    h1 {
-      margin-top: 40px;
-      font-size: 2em;
-      color: #6a0dad;
+    .dark-mode {
+      background: linear-gradient(135deg, #1a001f, #2d0030);
+      color: #fff;
     }
 
-    .text {
-      max-width: 600px;
-      margin: 20px auto;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    .card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      padding: 25px;
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    .dark-mode .card {
+      background: #2b0030;
+      color: #fff;
+    }
+
+    h1 {
+      color: #9b59b6;
+      font-size: 1.8em;
+    }
+
+    h2 {
+      color: #555;
+      font-weight: normal;
+    }
+
+    p {
       line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    .btn-container {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .music-btn {
+      background: #b76cf9;
+      color: white;
+    }
+
+    .hug-btn {
+      background: #ffb6c1;
+      color: #4a004e;
+    }
+
+    .mode-btn {
+      background: #fff4ff;
+      color: #8e44ad;
+      border: 1px solid #d7aefb;
+    }
+
+    .meaning-btn {
+      background: #e8d3ff;
+      color: #5e2b8a;
+    }
+
+    footer {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #9b59b6;
     }
 
     .love {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #f8e6ff;
-      border-radius: 10px;
-      padding: 8px 14px;
-      font-size: 14px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-
-    .love:hover {
-      transform: scale(1.1);
-      background: #eac4ff;
-    }
-
-    .heart {
-      position: fixed;
-      width: 15px;
-      height: 15px;
-      background: pink;
-      transform: rotate(45deg);
-      animation: fall 4s linear infinite;
-    }
-
-    .heart::before,
-    .heart::after {
-      content: "";
       position: absolute;
-      width: 15px;
-      height: 15px;
-      background: pink;
-      border-radius: 50%;
+      font-size: 16px;
+      animation: floatUp 4s linear forwards;
     }
 
-    .heart::before { top: -7px; left: 0; }
-    .heart::after { left: -7px; top: 0; }
-
-    @keyframes fall {
-      0% { transform: translateY(0) rotate(45deg) scale(1); opacity: 1; }
-      100% { transform: translateY(100vh) rotate(45deg) scale(0.5); opacity: 0; }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
     }
 
-    audio {
-      position: fixed;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      border-radius: 10px;
+    @media (max-width: 600px) {
+      body { padding: 10px; }
+      h1 { font-size: 1.5em; }
+      p { font-size: 14px; }
+      button { font-size: 13px; padding: 8px 12px; }
     }
   </style>
 </head>
 <body>
+  <div class="card">
+    <h1>Dandi 💜 Ciya</h1>
+    <h2>Kisah Cinta Jarak Jauh</h2>
+    <p><b>Untuk: Ciya — Dari: Dandi</b></p>
+    <p>aku mencintainya, bukan karena siapa dia di mata dunia, tapi karena di mataku, dia sudah cukup untuk jadi segalanya.</p>
+    <p>Setiap tatapnya seperti langit sore, tenang, lembut, tapi mampu menenangkan ribuan resahku.</p>
+    <p>Setiap senyumnya, selalu berhasil membuat waktu berhenti sejenak, seakan dunia memberi ruang untukku menikmati indahnya dirinya.</p>
+    <p><b>— untuk kekasih ku (Ciya)</b></p>
 
-  <h1>💌 Untuk Ciya dari Dandi 💜</h1>
+    <div class="btn-container">
+      <button class="music-btn" onclick="toggleMusic()">🎵 Putar Musik</button>
+      <button class="hug-btn" onclick="sendHug()">🤗 Peluk Jauh</button>
+      <button class="mode-btn" onclick="toggleMode()">🌙 Mode Malam</button>
+      <button class="meaning-btn" onclick="goToMeaning()">🎧 Lihat Makna Lagu</button>
+    </div>
 
-  <div class="text">
-    <p>“Aku mencintainya, bukan karena siapa dia di mata dunia, tapi karena di mataku, dia sudah cukup untuk jadi segalanya.”</p>
-    <p>Setiap tatapnya seperti langit sore — tenang, lembut, tapi mampu menenangkan ribuan resahku.</p>
-    <p>Setiap senyumnya selalu berhasil membuat waktu berhenti sejenak, seakan dunia memberi ruang untukku menikmati indahnya dirinya.</p>
-    <p style="margin-top:20px;">— untuk kekasihku (Ciya) 💜</p>
+    <footer>💜 Dandi selalu di sini, untuk Ciya 💜</footer>
   </div>
 
-  <div class="love" onclick="peluk()">
-    🤗 Kirim Peluk Jauh
-  </div>
-
-  <audio autoplay loop controls>
-    <source src="birds_instrumental.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung audio.
+  <audio id="music" loop>
+    <source src="https://files.catbox.moe/0ojx7c.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    function peluk() {
-      alert("💞 Peluk jauh terkirim ke Ciya dari Dandi 💞");
-      for (let i = 0; i < 8; i++) {
-        buatHati();
+    const music = document.getElementById("music");
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+      } else {
+        music.play();
+        createFloatingHearts();
       }
+      isPlaying = !isPlaying;
     }
 
-    function buatHati() {
+    function toggleMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    function sendHug() {
+      for (let i = 0; i < 15; i++) {
+        createHeart();
+      }
+      alert("🤗 Pelukan hangat dari Dandi untuk Ciya 💞");
+    }
+
+    function createHeart() {
       const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.style.left = Math.random() * window.innerWidth + "px";
-      heart.style.background = `hsl(${Math.random() * 360}, 80%, 70%)`;
+      heart.classList.add("love");
+      heart.textContent = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.top = "100vh";
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 4000);
     }
+
+    function createFloatingHearts() {
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("love");
+        heart.textContent = "💜";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "100vh";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+      }, 800);
+    }
+
+    function goToMeaning() {
+      window.location.href = "makna.html";
+    }
   </script>
 </body>
-</html>
+        </html>
