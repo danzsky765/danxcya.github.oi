@@ -1,0 +1,191 @@
+<!doctype html>
+
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dandi ♥ Ciya — Cinta Jarak Jauh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --pink:#ff77d6;
+      --purple:#7b61ff;
+      --bg1:#f8f0ff;
+      --bg2:#fff0f8;
+      --text:#222;
+      --card-bg: rgba(255,255,255,0.94);
+      --shadow: 0 20px 50px rgba(123,97,255,0.2);
+    }
+    .dark{
+      --bg1:#0b0320;
+      --bg2:#130428;
+      --text:#e6e1ff;
+      --card-bg: rgba(10,6,20,0.6);
+      --shadow: 0 24px 60px rgba(9,2,30,0.6);
+    }*{box-sizing:border-box;user-select:none}
+html,body{height:100%}
+body{
+  margin:0;min-height:100vh;font-family:'Poppins',sans-serif;
+  background: linear-gradient(180deg,var(--bg1),var(--bg2));
+  display:flex;align-items:center;justify-content:center;padding:24px;overflow:hidden;transition:background .6s ease,color .4s ease
+}
+
+.card{position:relative;background:var(--card-bg);backdrop-filter:blur(8px);border-radius:18px;padding:30px;max-width:760px;text-align:center;box-shadow:var(--shadow);z-index:3;transition:all .4s}
+h1{color:var(--purple);font-size:32px;margin:0}
+h2{font-weight:500;color:var(--text);margin:6px 0 14px}
+p{line-height:1.6;font-size:16px;color:var(--text)}
+.names{color:var(--pink);font-weight:700;font-size:18px;margin-bottom:14px}
+
+/* orbit love */
+.love-orbit{position:absolute;width:220px;height:220px;top:20px;left:50%;transform:translateX(-50%);animation:rotate 10s linear infinite;z-index:2}
+.love-orbit span{position:absolute;top:0;left:50%;width:24px;height:24px;background:linear-gradient(180deg,var(--pink),var(--purple));transform:translate(-50%,-50%) rotate(45deg);border-radius:4px;opacity:.95}
+.love-orbit span::before,.love-orbit span::after{content:'';position:absolute;width:24px;height:24px;background:inherit;border-radius:50%}
+.love-orbit span::before{top:-12px;left:0}
+.love-orbit span::after{left:-12px;top:0}
+@keyframes rotate{0%{transform:translateX(-50%) rotate(0);}100%{transform:translateX(-50%) rotate(360deg);}}
+
+.controls{margin-top:18px;display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
+.btn{padding:10px 16px;border-radius:12px;border:none;font-weight:700;cursor:pointer;transition:transform .2s,opacity .2s}
+.btn:hover{transform:scale(1.05)}
+.play{background:linear-gradient(90deg,var(--purple),var(--pink));color:#fff}
+.hug{background:linear-gradient(90deg,#ffb7ef,#d5baff);color:#fff}
+.mode{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+
+footer{margin-top:18px;font-size:13px;color:var(--text)}
+
+/* heart explosion */
+.heart{position:fixed;width:18px;height:18px;background:linear-gradient(180deg,var(--pink),var(--purple));transform:rotate(45deg);border-radius:4px;pointer-events:none;opacity:0.95;filter:drop-shadow(0 8px 18px rgba(0,0,0,0.12));animation:explode 900ms cubic-bezier(.2,.9,.2,1) forwards}
+.heart::before,.heart::after{content:'';position:absolute;width:18px;height:18px;background:inherit;border-radius:50%}
+.heart::before{top:-9px;left:0}
+.heart::after{left:-9px;top:0}
+@keyframes explode{0%{transform:scale(1) rotate(45deg);opacity:1}100%{transform:translate(var(--x),var(--y)) scale(0.2) rotate(45deg);opacity:0}}
+
+/* hug bubble */
+.hug-bubble{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:60}
+.hug-text{background:linear-gradient(90deg,var(--purple),var(--pink));color:#fff;padding:18px 28px;border-radius:999px;font-weight:800;font-size:18px;opacity:0;transform:scale(.6);animation:hugShow 1.8s ease forwards}
+@keyframes hugShow{0%{opacity:0;transform:scale(.6)}30%{opacity:1;transform:scale(1.06)}100%{opacity:0;transform:scale(.85)}}
+
+/* dark starfield (hidden by default) */
+.starfield{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0;transition:opacity .6s}
+.star{position:absolute;background:radial-gradient(circle,#fff 0%,rgba(255,255,255,.9) 40%,transparent 60%);opacity:0;animation:twinkle var(--dur,3s) linear infinite}
+@keyframes twinkle{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
+
+/* responsive */
+@media (max-width:520px){.card{padding:20px}h1{font-size:24px}}
+
+  </style>
+</head>
+<body>  <div class="starfield" id="starfield"></div>  <div class="card" id="card">
+    <div class="love-orbit" aria-hidden="true"><span></span></div>
+    <h1>Dandi ♥ Ciya</h1>
+    <h2>Kisah Cinta Jarak Jauh</h2>
+    <div class="names">Untuk: <strong>Ciya</strong> — Dari: <strong>Dandi</strong></div><p>aku mencintainya, bukan karena siapa dia di mata dunia, tapi karena di mataku, dia sudah cukup untuk jadi segalanya.</p>
+<p>Setiap tatapnya seperti langit sore, tenang, lembut, tapi mampu menenangkan ribuan resahku.</p>
+<p>Setiap senyumnya, selalu berhasil membuat waktu berhenti sejenak, seakan dunia memberi ruang untukku menikmati indahnya dirinya.</p>
+<p style="text-align:right;font-weight:700">— untuk kekasih ku (Ciya)</p>
+
+<div class="controls">
+  <button class="btn play" id="playBtn">▶️ Putar Musik</button>
+  <button class="btn hug" id="hugBtn">🤗 Peluk Jauh</button>
+  <button class="btn mode" id="modeBtn">🌙 Mode Malam</button>
+</div>
+
+<footer>💜 Dandi selalu di sini, untuk Ciya 💜</footer>
+
+  </div>  <audio id="bgAudio" loop playsinline>
+    <source src="birds_instrumental.mp3" type="audio/mpeg">
+  </audio>  <script>
+    // elements
+    const audio = document.getElementById('bgAudio');
+    const playBtn = document.getElementById('playBtn');
+    const hugBtn = document.getElementById('hugBtn');
+    const modeBtn = document.getElementById('modeBtn');
+    const starfield = document.getElementById('starfield');
+    const body = document.body;
+
+    // autoplay attempt
+    window.addEventListener('load', ()=> setTimeout(()=>{ audio.play().catch(()=>{}); },400));
+
+    // play/pause
+    playBtn.addEventListener('click', ()=>{
+      if(audio.paused){ audio.play().then(()=> playBtn.textContent='⏸️ Pause Musik').catch(()=>{}); }
+      else { audio.pause(); playBtn.textContent='▶️ Putar Musik'; }
+    });
+
+    // hug
+    hugBtn.addEventListener('click', ()=>{
+      const wrap = document.createElement('div');
+      wrap.className='hug-bubble';
+      const text = document.createElement('div');
+      text.className='hug-text';
+      text.textContent = '🤗 Dandi memeluk Ciya dari jauh 💗';
+      wrap.appendChild(text);
+      document.body.appendChild(wrap);
+      setTimeout(()=> wrap.remove(), 1800);
+    });
+
+    // click -> love explosion
+    document.addEventListener('click', e => {
+      // ignore clicks on controls
+      if(e.target.closest('.controls')) return;
+      for(let i=0;i<7;i++){
+        const heart = document.createElement('div');
+        heart.className='heart';
+        const size = 12 + Math.random()*20;
+        heart.style.width = size+'px';
+        heart.style.height = size+'px';
+        heart.style.left = e.clientX - size/2 + 'px';
+        heart.style.top = e.clientY - size/2 + 'px';
+        const dx = (Math.random()-0.5)*300;
+        const dy = (Math.random()-1)*260 - 20;
+        heart.style.setProperty('--x', dx+'px');
+        heart.style.setProperty('--y', dy+'px');
+        document.body.appendChild(heart);
+        setTimeout(()=> heart.remove(), 900);
+      }
+    });
+
+    // Mode malam toggle
+    let dark = false;
+    modeBtn.addEventListener('click', ()=>{
+      dark = !dark;
+      if(dark){
+        body.classList.add('dark');
+        modeBtn.textContent = '☀️ Mode Terang';
+        showStarfield();
+      } else {
+        body.classList.remove('dark');
+        modeBtn.textContent = '🌙 Mode Malam';
+        hideStarfield();
+      }
+    });
+
+    // create starfield when entering dark mode
+    function showStarfield(){
+      starfield.innerHTML = '';
+      starfield.style.opacity = 1;
+      const count = 42;
+      for(let i=0;i<count;i++){
+        const s = document.createElement('div');
+        s.className = 'star';
+        const size = Math.random()*3 + 1;
+        s.style.width = (4*size)+'px';
+        s.style.height = (4*size)+'px';
+        s.style.left = Math.random()*100 + '%';
+        s.style.top = Math.random()*100 + '%';
+        s.style.setProperty('--dur', (2+Math.random()*4)+'s');
+        s.style.animationDelay = (Math.random()*3)+'s';
+        starfield.appendChild(s);
+      }
+      // gentle overlay to darken background slightly
+      starfield.style.background = 'radial-gradient(ellipse at center, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.35) 60%)';
+    }
+    function hideStarfield(){
+      starfield.style.opacity = 0;
+      setTimeout(()=> starfield.innerHTML = '', 700);
+    }
+
+    // keyboard shortcut: space toggles music
+    window.addEventListener('keydown', e=>{ if(e.code==='Space'){ e.preventDefault(); playBtn.click(); }});
+  </script></body>
+</html>
