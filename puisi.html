@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puisi Cinta — Dandi 💜 Ciya</title>
+<style>
+  body {
+    margin: 0;
+    background: radial-gradient(ellipse at bottom, #1a0033 0%, #000000 100%);
+    color: #f5d4ff;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+    animation: fadeIn 2s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  h1 {
+    margin-top: 70px;
+    color: #ffb3ff;
+    font-size: 2em;
+    letter-spacing: 1px;
+  }
+
+  .poem {
+    width: 85%;
+    max-width: 550px;
+    margin: 30px auto;
+    background: rgba(100, 0, 130, 0.25);
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+    padding: 20px;
+    font-size: 1.1em;
+    line-height: 1.7em;
+  }
+
+  button {
+    background: linear-gradient(90deg, #c04cff, #ff7af5);
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    margin-top: 20px;
+    font-size: 1em;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+    transition: transform 0.2s, box-shadow 0.3s;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 0, 255, 0.6);
+  }
+
+  /* Efek bintang */
+  .stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: transparent url('https://cdn.jsdelivr.net/gh/filippofinke/star-background@master/stars.png') repeat top center;
+    z-index: -1;
+    animation: twinkling 60s linear infinite;
+  }
+
+  @keyframes twinkling {
+    from {background-position: 0 0;}
+    to {background-position: -10000px 5000px;}
+  }
+
+  /* Efek love */
+  .love {
+    position: fixed;
+    top: -10px;
+    color: pink;
+    font-size: 20px;
+    animation: fall 5s linear infinite;
+    opacity: 0.8;
+    z-index: 1;
+  }
+
+  @keyframes fall {
+    0% {transform: translateY(0) rotate(0deg);}
+    100% {transform: translateY(100vh) rotate(360deg);}
+  }
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<h1>🌙 Puisi dari Semesta 💜</h1>
+
+<div class="poem">
+  mungkin suatu hari,  
+  aku tak lagi punya tubuh,  
+  tapi mungkin aku jadi cahaya kecil di langit malam,  
+  yang diam-diam menatapmu dari jauh.  
+
+  atau mungkin aku jadi angin,  
+  yang lewat perlahan di rambutmu,  
+  sekadar ingin tahu apakah kamu masih tersenyum seperti dulu.  
+
+  aku tak tahu bagaimana caranya waktu bekerja,  
+  tapi aku yakin di antara triliunan kemungkinan yang semesta ciptakan,  
+  aku akan tetap menemukanmu.  
+
+  karena sekalipun dunia berulang seribu kali,  
+  aku masih akan memilih jatuh cinta padamu,  
+  dengan cara yang baru,  
+  tapi dengan perasaan yang sama.
+</div>
+
+<button onclick="window.location.href='index.html'">💫 Kembali ke Halaman Cinta</button>
+
+<script>
+  // Efek love beterbangan
+  function createLove() {
+    const love = document.createElement('div');
+    love.classList.add('love');
+    love.innerHTML = '💖';
+    love.style.left = Math.random() * 100 + 'vw';
+    love.style.animationDuration = (3 + Math.random() * 2) + 's';
+    document.body.appendChild(love);
+    setTimeout(() => love.remove(), 5000);
+  }
+  setInterval(createLove, 600);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dandi ♥ Ciya — Halaman Cinta</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent1:#b84cff;
+    --accent2:#ff4ff8;
+    --bg1:#1b0034;
+    --bg2:#000000;
+    --card: rgba(40,6,40,0.6);
+    --text:#f3e8ff;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background: radial-gradient(ellipse at bottom, var(--bg1) 0%, var(--bg2) 100%);
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden;
+    transition:background .6s,color .4s;
+  }
+
+  /* Stars background layer */
+  .stars{
+    position:fixed;inset:0;z-index:-2;background:transparent url('https://cdn.jsdelivr.net/gh/filippofinke/star-background@master/stars.png') repeat;
+    animation:twink 60s linear infinite;pointer-events:none;opacity:0.95;
+  }
+  @keyframes twink{from{background-position:0 0}to{background-position:-10000px 5000px}}
+
+  /* floating rotating hearts (orbit) */
+  .orbit{
+    position:fixed;left:50%;top:12vh;transform:translateX(-50%);width:200px;height:200px;z-index:0;pointer-events:none;
+    animation:rotateOrbit 14s linear infinite;
+  }
+  .orbit .h{
+    position:absolute;left:50%;top:0;width:22px;height:22px;background:linear-gradient(180deg,var(--accent1),var(--accent2));
+    transform:translate(-50%,-50%) rotate(45deg);border-radius:4px;opacity:.95;
+  }
+  .orbit .h::before,.orbit .h::after{content:"";position:absolute;width:22px;height:22px;background:inherit;border-radius:50%}
+  .orbit .h::before{top:-11px;left:0} .orbit .h::after{left:-11px;top:0}
+  @keyframes rotateOrbit{from{transform:translateX(-50%) rotate(0)}to{transform:translateX(-50%) rotate(360deg)}}
+
+  /* layout card */
+  .wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:36px 16px 80px}
+  .card{width:100%;max-width:760px;background:var(--card);backdrop-filter:blur(6px);border-radius:18px;padding:26px;text-align:center;box-shadow:0 18px 50px rgba(120,40,160,0.12)}
+  h1{margin:0;font-size:28px;color:var(--accent1)}
+  .subtitle{color:rgba(255,255,255,0.85);margin:6px 0 14px}
+
+  .poem{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;margin:12px auto;color:var(--text);max-width:720px;line-height:1.6;text-align:left}
+
+  /* buttons bar (sejajar) */
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+  .btn{
+    border:0;padding:10px 16px;border-radius:999px;font-weight:700;cursor:pointer;
+    background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff;box-shadow:0 8px 22px rgba(184,76,255,0.18);
+    transition:transform .18s,box-shadow .18s;
+  }
+  .btn:hover{transform:translateY(-4px)}
+  .btn.secondary{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.06);box-shadow:none}
+
+  footer{margin-top:22px;color:rgba(255,255,255,0.6);font-size:13px}
+
+  /* small screens */
+  @media (max-width:640px){
+    .poem{font-size:15px;padding:12px}
+    .card{padding:18px}
+    h1{font-size:22px}
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" aria-hidden="true"></div>
+<div class="orbit" aria-hidden="true"><div class="h"></div></div>
+
+<div class="wrap">
+  <div class="card" role="main">
+    <h1>Dandi ♥ Ciya</h1>
+    <div class="subtitle">Kartu Cinta — Galaxy Edition</div>
+
+    <div class="poem" id="p1">
+      aku mencintainya, bukan karena siapa dia di mata dunia,  
+      tapi karena di mataku, dia sudah cukup untuk jadi segalanya.  
+      setiap tatapnya seperti langit sore, tenang, lembut,  
+      tapi mampu menenangkan ribuan resahku.  
+      setiap senyumnya, selalu berhasil membuat waktu berhenti sejenak,  
+      seakan dunia memberi ruang untukku menikmati indahnya dirinya.
+    </div>
+
+    <div class="poem" id="p2">
+      aku cuma penasaran, bahan apa yang semesta pakai buat nyiptain kamu?  
+      kok bisa senyummu semanis itu,  
+      mata kamu sedamai itu,  
+      dan suara kamu sebikin tenang itu.
+    </div>
+
+    <div class="btn-row" role="navigation" aria-label="kontrol">
+      <button class="btn" id="musicBtn" onclick="toggleMusic()">🎵 Putar Musik</button>
+      <button class="btn secondary" onclick="sendHug()">🤗 Peluk Jauh</button>
+      <button class="btn secondary" onclick="location.href='makna.html'">💌 Makna Lagu</button>
+      <button class="btn secondary" onclick="location.href='album.html'">📷 Album Cinta</button>
+      <button class="btn secondary" onclick="location.href='puisi.html'">🌙 Puisi</button>
+      <button class="btn secondary" id="modeBtn" onclick="toggleDark()">🌗 Mode Malam</button>
+    </div>
+
+    <footer>💜 Dandi selalu di sini, untuk Ciya — 2025</footer>
+  </div>
+</div>
+
+<!-- audio (local file) -->
+<audio id="bg" src="birds_instrumental.mp3" loop preload="auto"></audio>
+
+<script>
+  // love particles (additional soft floating hearts)
+  function spawnSoftLove(){
+    const d = document.createElement('div');
+    d.textContent = '💖';
+    d.style.position='fixed';
+    d.style.left = Math.random()*90 + 'vw';
+    d.style.top = Math.random()*30 + 'vh';
+    d.style.fontSize = (12 + Math.random()*24) + 'px';
+    d.style.opacity = 0.9;
+    d.style.transform = 'translateY(0)';
+    d.style.zIndex = 0;
+    d.style.pointerEvents='none';
+    d.style.transition = 'transform 6s linear, opacity 1s linear';
+    document.body.appendChild(d);
+    requestAnimationFrame(()=> d.style.transform = 'translateY(70vh)');
+    setTimeout(()=>{ d.style.opacity=0; },4800);
+    setTimeout(()=> d.remove(),5600);
+  }
+  setInterval(spawnSoftLove, 900);
+
+  // music toggle button
+  const audio = document.getElementById('bg');
+  const musicBtn = document.getElementById('musicBtn');
+  let playing = false;
+  function toggleMusic(){
+    if(playing){ audio.pause(); musicBtn.textContent='🎵 Putar Musik'; }
+    else { audio.play().catch(()=>{}); musicBtn.textContent='⏸ Pause Musik'; }
+    playing = !playing;
+  }
+
+  // peluk jauh
+  function sendHug(){
+    // visual hug burst
+    for(let i=0;i<12;i++){
+      const h = document.createElement('div');
+      h.textContent='💗';
+      h.style.position='fixed';
+      h.style.left = (50 + (Math.random()-0.5)*30) + 'vw';
+      h.style.top = (50 + (Math.random()-0.5)*10) + 'vh';
+      h.style.transform='translate(-50%,-50%) scale(0.6)';
+      h.style.fontSize = (18 + Math.random()*32) + 'px';
+      h.style.opacity=1;
+      h.style.pointerEvents='none';
+      h.style.transition='transform .9s ease, opacity .9s ease';
+      document.body.appendChild(h);
+      setTimeout(()=> h.style.transform='translate(-50%,-50%) scale(1.8)',10);
+      setTimeout(()=> h.style.opacity=0,700);
+      setTimeout(()=> h.remove(),1000);
+    }
+    alert('🤗 Pelukan hangat dikirim ke Ciya dari Dandi');
+  }
+
+  // dark mode (toggle)
+  const modeBtn = document.getElementById('modeBtn');
+  function toggleDark(){
+    document.body.classList.toggle('dark-mode');
+    // change star brightness slightly
+    document.querySelector('.stars').style.opacity = document.body.classList.contains('dark-mode') ? '0.8':'0.95';
+  }
+
+  // make whole page scrollable if content grows
+  document.documentElement.style.height = 'auto';
+  document.body.style.minHeight = '100vh';
+</script>
+</body>
+</html>
