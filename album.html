@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Album Cinta 💜</title>
+  <style>
+    body {
+      background: #0b0014;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+    }
+    .slideshow {
+      width: 90%;
+      max-width: 400px;
+      margin: 60px auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(255, 182, 255, 0.3);
+    }
+    .slideshow img {
+      width: 100%;
+      height: auto;
+      display: none;
+      transition: opacity 1s ease;
+    }
+    .slideshow img.active {
+      display: block;
+      opacity: 1;
+    }
+    .love {
+      position: absolute;
+      color: pink;
+      font-size: 20px;
+      animation: float 4s linear infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-200px) scale(2); opacity: 0; }
+    }
+    button {
+      background: #8a2be2;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background: #a347ff;
+    }
+  </style>
+</head>
+<body>
+  <h2>💜 Album Cinta Dandi & Ciya 💜</h2>
+  <div class="slideshow">
+    <img src="img/1.jpg" class="active">
+    <img src="img/2.jpg">
+    <img src="img/3.jpg">
+  </div>
+
+  <button onclick="window.location.href='index.html'">🏠 Kembali</button>
+
+  <script>
+    // slideshow otomatis
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slideshow img');
+    function showNext() {
+      slides[slideIndex].classList.remove('active');
+      slideIndex = (slideIndex + 1) % slides.length;
+      slides[slideIndex].classList.add('active');
+    }
+    setInterval(showNext, 3000);
+
+    // efek love muncul acak
+    function createLove() {
+      const love = document.createElement('div');
+      love.classList.add('love');
+      love.innerText = '💖';
+      love.style.left = Math.random() * 100 + 'vw';
+      love.style.top = '100vh';
+      document.body.appendChild(love);
+      setTimeout(() => love.remove(), 4000);
+    }
+    setInterval(createLove, 500);
+  </script>
+</body>
+</html>
